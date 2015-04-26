@@ -25,11 +25,10 @@ chop' x xs start end
          else chop' x xs (mid + 1) end
 
 middle :: [Int] -> Int
-middle []         = -1
-middle (x:[])     = x
-middle (x:y:[])   = x
-middle (x:y:z:[]) = y
-middle xs         = middle $ tail $ init xs
+middle []       = -1
+middle (x:[])   = x
+middle (x:y:[]) = x
+middle xs       = middle $ tail $ init xs
 
 fromJust :: Maybe Int -> Int
 fromJust Nothing = -1
