@@ -1,3 +1,6 @@
+import Data.List
+import Test.QuickCheck
+
 chop :: Int -> [Int] -> Int -- list should be Ordered
 chop _ [] = -1
 chop int [x]
@@ -24,10 +27,16 @@ chop' int list start end
         then chop' int list start mid
         else chop' int list (mid + 1) end
 
-
 middle :: [Int] -> Int
 middle []         = -1
 middle (x:[])     = x
 middle (x:y:[])   = x
 middle (x:y:z:[]) = y
 middle xs         = middle $ tail $ init xs
+
+fromJust :: Maybe Int -> Int
+fromJust Nothing = -1
+fromJust (Just x) = x
+
+prop_chop :: Int -> [Int] -> Bool
+prop_chop x xs = chop x (sort xs) == (fromJust $ elemIndex x (sort xs))
