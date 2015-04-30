@@ -10,7 +10,7 @@ chop x xs =
 
 chop' :: Int -> [(Int, Int)] -> Int
 chop' x [(y, i)]
-  | x == y = i
+  | x == y    = i
   | otherwise = -1
 chop' x xs
   | x <= y    = chop' x first
