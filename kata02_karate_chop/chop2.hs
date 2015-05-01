@@ -5,8 +5,8 @@ import Test.QuickCheck
 chop :: Int -> [Int] -> Int
 chop _ [] = -1
 chop x xs =
-  let indexed_xs = zip xs [0..]
-  in chop' x indexed_xs
+  let indexedXs = zip xs [0..]
+  in chop' x indexedXs
 
 chop' :: Int -> [(Int, Int)] -> Int
 chop' x [(y, i)]
@@ -21,5 +21,5 @@ chop' x xs
 
 prop_chop :: Int -> [Int] -> Bool
 prop_chop x xs =
-  let sorted_xs = sort xs
-  in chop x sorted_xs == (fromJust $ elemIndex x sorted_xs)
+  let sortedXs = sort xs
+  in chop x sortedXs == (fromJust $ elemIndex x sortedXs)

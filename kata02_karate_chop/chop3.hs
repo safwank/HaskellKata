@@ -5,12 +5,12 @@ import Test.QuickCheck
 chop :: Int -> [Int] -> Maybe Int
 chop _ [] = Nothing
 chop x xs =
-  let indexed_xs = zip xs [0..]
-  in chop' x indexed_xs
+  let indexedXs = zip xs [0..]
+  in chop' x indexedXs
 
 chop' :: Int -> [(Int, Int)] -> Maybe Int
 chop' x [(y, i)]
-  | x == y = Just i
+  | x == y    = Just i
   | otherwise = Nothing
 chop' x xs
   | x <= y    = chop' x first
@@ -21,5 +21,5 @@ chop' x xs
 
 prop_chop :: Int -> [Int] -> Bool
 prop_chop x xs =
-  let sorted_xs = sort xs
-  in chop x sorted_xs == elemIndex x sorted_xs
+  let sortedXs = sort xs
+  in chop x sortedXs == elemIndex x sortedXs

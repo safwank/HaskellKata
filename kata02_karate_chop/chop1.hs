@@ -27,5 +27,5 @@ chop' x xs start end
 
 prop_chop :: Int -> [Int] -> Bool
 prop_chop x xs =
-  let sorted_xs = sort xs
-  in chop x sorted_xs == (fromJust $ elemIndex x sorted_xs)
+  let sortedXs = sort xs
+  in chop x sortedXs == (fromJust $ elemIndex x sortedXs)
