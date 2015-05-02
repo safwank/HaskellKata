@@ -1,5 +1,4 @@
 import Data.List
-import Utils
 import Test.QuickCheck
 
 chop :: Int -> [Int] -> Maybe Int
