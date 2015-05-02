@@ -7,11 +7,12 @@ chop x xs = chop' x xs 0 (V.length xs - 1)
 
 chop' :: Int -> V.Vector Int -> Int -> Int -> Maybe Int
 chop' x xs low high
-  | low > high     = Nothing
-  | x < xs V.! mid = chop' x xs low (mid - 1)
-  | x > xs V.! mid = chop' x xs (mid + 1) high
-  | otherwise      = Just mid
-  where mid = low + (high - low) `div` 2
+  | low > high = Nothing
+  | x < midVal = chop' x xs low (midIdx - 1)
+  | x > midVal = chop' x xs (midIdx + 1) high
+  | otherwise  = Just midIdx
+  where midIdx = low + (high - low) `div` 2
+        midVal = xs V.! midIdx
 
 prop_chop :: Int -> [Int] -> Bool
 prop_chop x xs =
