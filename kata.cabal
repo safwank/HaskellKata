@@ -9,13 +9,13 @@ cabal-version:       >=1.10
 
 library
   default-language: Haskell2010
-  exposed-modules:  WeatherMunger
+  exposed-modules:  Kata04.WeatherMunger
   build-depends:    base >=4.8 && <4.9,
                     bytestring == 0.10.6.*,
                     vector == 0.10.12.*,
                     cassava == 0.4.2.*,
                     QuickCheck == 2.8.*
-  hs-source-dirs:   src, src/kata04-data-munging/
+  hs-source-dirs:   src
 
 test-suite hspec
   default-language: Haskell2010

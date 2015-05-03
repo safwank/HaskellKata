@@ -1,22 +1,22 @@
-module WeatherMungerSpec (spec) where
+module Kata04.WeatherMungerSpec (spec) where
 
 import Test.Hspec
-import WeatherMunger
+import Kata04.WeatherMunger
 
 spec :: Spec
 spec = do
   describe "#compareSpreads" $ do
-    it "is EQ when the spreads are equal" $do
+    it "is EQ when the spreads are equal" $ do
       let first = Weather 1 20 10
           second = Weather 1 20 10
       compareSpreads first second `shouldBe` EQ
 
-    it "is LT when the first spread is smaller than the second" $do
+    it "is LT when the first spread is smaller than the second" $ do
       let first = Weather 1 20 15
           second = Weather 1 20 10
       compareSpreads first second `shouldBe` LT
 
-    it "is GT when the first spread is bigger than the second" $do
+    it "is GT when the first spread is bigger than the second" $ do
       let first = Weather 1 20 10
           second = Weather 1 20 15
       compareSpreads first second `shouldBe` GT

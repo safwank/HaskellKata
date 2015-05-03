@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module WeatherMunger (Weather(..), compareSpreads, calcSpread, showWeathers) where
+module Kata04.WeatherMunger (Weather(..), compareSpreads, calcSpread, showWeathers) where
 
 import Control.Applicative
 import qualified Data.ByteString.Lazy as BL
