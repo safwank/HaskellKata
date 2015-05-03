@@ -4,7 +4,7 @@ Haskell code kata based on Dave Thomas' http://codekata.com/.
 ## Build project
 
 ```
-cabal install
+cabal build
 ```
 
 ## Run tests
