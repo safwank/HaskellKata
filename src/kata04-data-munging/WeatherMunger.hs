@@ -8,7 +8,7 @@ import Data.Csv
 import Data.List
 import qualified Data.Vector as V
 
-data Weather = Weather { day :: !Int, maxTemp :: !Int, minTemp :: !Int }
+data Weather = Weather { day :: Int, maxTemp :: Int, minTemp :: Int }
 
 instance FromNamedRecord Weather where
   parseNamedRecord r = Weather <$> r .: "dy" <*> r .: "mxT" <*> r .: "mnT"
@@ -18,14 +18,14 @@ main = do
   csvData <- BL.readFile "weather.dat"
   case decodeByName csvData of
     Left err            -> putStrLn err
-    Right (_, weathers) -> mapM_ putStrLn $ showWeathers $ sortBy sortByTempSpread $ V.toList weathers
+    Right (_, weathers) -> mapM_ putStrLn $ showWeathers $ sortBy compareSpreads $ V.toList weathers
 
-sortByTempSpread :: Weather -> Weather -> Ordering
-sortByTempSpread weatherA weatherB = (calcTempSpread weatherA) `compare` (calcTempSpread weatherB)
+compareSpreads :: Weather -> Weather -> Ordering
+compareSpreads weatherA weatherB = (calcSpread weatherA) `compare` (calcSpread weatherB)
 
-calcTempSpread :: Weather -> Int
-calcTempSpread weather = (maxTemp weather) - (minTemp weather)
+calcSpread :: Weather -> Int
+calcSpread weather = (maxTemp weather) - (minTemp weather)
 
 showWeathers :: [Weather] -> [String]
 showWeathers weathers = map showWeather weathers
-  where showWeather = \w -> show (day w) ++ " " ++ show (calcTempSpread w)
+  where showWeather = \w -> show (day w) ++ " " ++ show (calcSpread w)
