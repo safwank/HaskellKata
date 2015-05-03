@@ -21,14 +21,11 @@ main = do
     Right (_, weathers) -> mapM_ putStrLn $ showWeathers $ sortBy sortByTempSpread $ V.toList weathers
 
 sortByTempSpread :: Weather -> Weather -> Ordering
-sortByTempSpread weatherA weatherB
-  | spreadA < spreadB = LT
-  | spreadA > spreadB = GT
-  | otherwise         = compare (day weatherA) (day weatherB)
-  where spreadA = (maxTemp weatherA) - (minTemp weatherA)
-        spreadB = (maxTemp weatherB) - (minTemp weatherB)
+sortByTempSpread weatherA weatherB = (calcTempSpread weatherA) `compare` (calcTempSpread weatherB)
+
+calcTempSpread :: Weather -> Int
+calcTempSpread weather = (maxTemp weather) - (minTemp weather)
 
 showWeathers :: [Weather] -> [String]
-showWeathers weathers = map (\w ->
-  let spread = (maxTemp w) - (minTemp w)
-  in show (day w) ++ " " ++ show spread) weathers
+showWeathers weathers = map showWeather weathers
+  where showWeather = \w -> show (day w) ++ " " ++ show (calcTempSpread w)
