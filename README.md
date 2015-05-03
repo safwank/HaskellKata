@@ -9,7 +9,11 @@ cabal build
 
 ## Run tests
 
+Without output
 ```
 cabal test
 ```
-
+With output
+```
+runhaskell -isrc/ -itest test/Spec.hs
+```
