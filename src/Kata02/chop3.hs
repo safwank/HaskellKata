@@ -1,5 +1,6 @@
+module Kata02.Chop3 (chop) where
+
 import Data.List
-import Test.QuickCheck
 
 chop :: Int -> [Int] -> Maybe Int
 chop _ [] = Nothing
@@ -17,8 +18,3 @@ chop' x xs
   where mid = length xs `quot` 2
         (first, second) = splitAt mid xs
         (y, i) = last first
-
-prop_chop :: Int -> [Int] -> Bool
-prop_chop x xs =
-  let sortedXs = sort xs
-  in chop x sortedXs == elemIndex x sortedXs

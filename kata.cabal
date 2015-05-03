@@ -9,7 +9,12 @@ cabal-version:       >=1.10
 
 library
   default-language: Haskell2010
-  exposed-modules:  Kata04.WeatherMunger
+  exposed-modules:  Kata02.Utils,
+                    Kata02.Chop1,
+                    Kata02.Chop2,
+                    Kata02.Chop3,
+                    Kata02.Chop4,
+                    Kata04.WeatherMunger
   build-depends:    base >=4.8 && <4.9,
                     bytestring == 0.10.6.*,
                     vector == 0.10.12.*,
@@ -20,6 +25,7 @@ library
 test-suite hspec
   default-language: Haskell2010
   build-depends:    base >=4.8 && <4.9,
+                    vector == 0.10.12.*,
                     kata,
                     hspec == 2.1.*,
                     test-framework == 0.8.1.*,

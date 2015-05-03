@@ -1,4 +1,4 @@
-module Utils (middle, fromJust) where
+module Kata02.Utils (middle, fromJust) where
 
 middle :: [Int] -> Int
 middle []       = -1

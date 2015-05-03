@@ -1,6 +1,7 @@
+module Kata02.Chop1 (chop) where
+
 import Data.List
-import Utils
-import Test.QuickCheck
+import Kata02.Utils
 
 chop :: Int -> [Int] -> Int
 chop _ [] = -1
@@ -24,8 +25,3 @@ chop' x xs start end
       if x <= first
          then chop' x xs start mid
          else chop' x xs (mid + 1) end
-
-prop_chop :: Int -> [Int] -> Bool
-prop_chop x xs =
-  let sortedXs = sort xs
-  in chop x sortedXs == (fromJust $ elemIndex x sortedXs)

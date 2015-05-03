@@ -15,5 +15,5 @@ cabal test
 ```
 With output
 ```
-runhaskell -isrc/ -itest test/Spec.hs
+runhaskell -isrc -itest test/Spec.hs
 ```
